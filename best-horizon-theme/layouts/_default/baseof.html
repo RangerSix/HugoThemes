@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+
+  {{/* Using Hugo Pipes to compile and fingerprint SCSS */}}
+  {{ $styles := resources.Get "css/style.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+
+  {{/* Alternatively, if you prefer to use a precompiled CSS, comment the above and use: */}}
+  {{/* <link rel="stylesheet" href="{{ "css/style.css" | relURL }}"> */}}
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{{ "/" | relLangURL }}" class="site-title">{{ .Site.Title }}</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer>
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+    <p>Theme by <a href="https://github.com/RangerSix/HugoThemes.git" target="_blank">RangerSix</a></p>
+  </footer>
+</body>
+</html>

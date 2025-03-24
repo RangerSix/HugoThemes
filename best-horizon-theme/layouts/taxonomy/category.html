@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <section class="tag-page">
+    <h1>Tag: {{ .Title }}</h1>
+    <ul>
+      {{ range .Pages }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}

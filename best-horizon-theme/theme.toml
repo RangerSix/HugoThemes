@@ -1,0 +1,5 @@
+name = "Best Horizon Theme"
+author = "RangerSix"
+license = "MIT"
+min_version = "0.80.0"
+description = "A modern, dark theme for Hugo-powered websites that embraces depth and clarity."
